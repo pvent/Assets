@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="upload" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1236,1027" sap2010:WorkflowViewState.IdRef="upload_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="upload" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1236,1158" sap2010:WorkflowViewState.IdRef="upload_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
       <x:String>System.Activities</x:String>
@@ -58,17 +58,30 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="upload" sap:VirtualizedContainerService.HintSize="426,862" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="upload" sap:VirtualizedContainerService.HintSize="426,993" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strInput" />
       <Variable x:TypeArguments="njl:JArray" Name="jsonArrayInput" />
-      <Variable x:TypeArguments="x:String" Name="strFolderId" />
+      <Variable x:TypeArguments="x:String" Name="strFolderName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFolderName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[nothing]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
     <ui:ReadTextFile Content="[strInput]" DisplayName="Read Text File" FileName="json" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonArray="[jsonArrayInput]" JsonString="[strInput]" />
     <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="384,551" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonArrayInput]">
@@ -88,7 +101,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[item.ToString]" />
-            <ui:OrchestratorHttpRequest ResponseHeaders="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Orchestrator HTTP Request" sap:VirtualizedContainerService.HintSize="230,22" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_1" JSONPayload="[item.ToString]" Method="POST" RelativeEndpoint="/odata/Assets" Result="[strResponseBody]" StatusCode="[intStatusCode]" />
+            <ui:OrchestratorHttpRequest ResponseHeaders="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Orchestrator HTTP Request" FolderPath="[strFolderName]" sap:VirtualizedContainerService.HintSize="230,22" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_1" JSONPayload="[item.ToString]" Method="POST" RelativeEndpoint="/odata/Assets" Result="[strResponseBody]" StatusCode="[intStatusCode]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[intStatusCode.ToString]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[strResponseBody]" />
           </Sequence>

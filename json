@@ -1,0 +1,73 @@
+[{
+  "Name": "nieBool",
+  "CanBeDeleted": true,
+  "ValueScope": "Global",
+  "ValueType": "Bool",
+  "Value": "False",
+  "StringValue": "",
+  "BoolValue": false,
+  "IntValue": 0,
+  "CredentialUsername": "",
+  "CredentialPassword": "",
+  "ExternalName": "",
+  "CredentialStoreId": null,
+  "HasDefaultValue": true,
+  "Description": null,
+  "FoldersCount": 1,
+  
+  "KeyValueList": []
+},{
+  "Name": "nieCredentials",
+  "CanBeDeleted": true,
+  "ValueScope": "Global",
+  "ValueType": "Credential",
+  "Value": "username: ",
+  "StringValue": "",
+  "BoolValue": false,
+  "IntValue": 0,
+  "CredentialUsername": "test",
+  "CredentialPassword": "test",
+  "ExternalName": null,
+  "CredentialStoreId": 437716,
+  "HasDefaultValue": true,
+  "Description": null,
+  "FoldersCount": 1,
+  
+  "KeyValueList": []
+},{
+  "Name": "nieInt",
+  "CanBeDeleted": true,
+  "ValueScope": "Global",
+  "ValueType": "Integer",
+  "Value": "123",
+  "StringValue": "",
+  "BoolValue": false,
+  "IntValue": 123,
+  "CredentialUsername": "",
+  "CredentialPassword": "",
+  "ExternalName": "",
+  "CredentialStoreId": null,
+  "HasDefaultValue": true,
+  "Description": null,
+  "FoldersCount": 1,
+  
+  "KeyValueList": []
+},{
+  "Name": "test",
+  "CanBeDeleted": true,
+  "ValueScope": "Global",
+  "ValueType": "Text",
+  "Value": "value",
+  "StringValue": "value",
+  "BoolValue": false,
+  "IntValue": 0,
+  "CredentialUsername": "",
+  "CredentialPassword": "",
+  "ExternalName": "",
+  "CredentialStoreId": null,
+  "HasDefaultValue": true,
+  "Description": null,
+  "FoldersCount": 1,
+  
+  "KeyValueList": []
+}]
